@@ -6,7 +6,7 @@
 
     @vite(['resources/sass/app.scss','resources/js/app.js'])
     <style>
-        /* body {
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -14,16 +14,18 @@
             margin: 0;
             text-align: center;
             flex-direction: column;
-        } */
+
+            
+        }
+        
     </style>
 </head>
 <body>
-    <h1>Home Ni {{ $name }} Tendy Juicy</h1>
-    <h2>SellingHotDog</h2>
+    <h1>Home Ni {{ $name }}</h1>
     <div class = 'row'>
-        <div class = 'col-md-6'>
+        <div class = 'col-md-15'>
           <button type="button " class="btn btn-primary">Primary</button>
         </div>
-    <img src='https://i0.wp.com/www.starmometer.com/wp-content/uploads/2011/06/Aljur-Century-Tuna-Hotdog.jpg'/>
+    <img src='https://png.pngtree.com/png-vector/20240802/ourlarge/pngtree-3d-white-color-chibi-little-ghost-on-transparent-background-png-image_13337394.png'/>
 </body>
 </html>

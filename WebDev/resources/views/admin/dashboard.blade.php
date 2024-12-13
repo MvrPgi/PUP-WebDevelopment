@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>Dashboard</title>
     <style>
         body {
             display: flex;
@@ -15,8 +15,8 @@
     </style>
 </head>
 <body>
-    <h1>Dashboard Ng Tendy Juicy</h1>
-    <h2>SellingHotDog</h2>
-    <img src='https://i0.wp.com/www.starmometer.com/wp-content/uploads/2011/06/Aljur-Century-Tuna-Hotdog.jpg'/>
+    <h1>Dashboard Ni Alwyn</h1>
+
+    <img src='https://png.pngtree.com/png-vector/20240802/ourlarge/pngtree-3d-white-color-chibi-little-ghost-on-transparent-background-png-image_13337394.png'/>
 </body>
 </html>
