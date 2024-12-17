@@ -60,6 +60,10 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::get('/home1/{name}', function ($name) {
         return view('home1',['name'=>$name]);
     });
+
+    Route::get('/home/{name}', function ($name) {
+        return view('admin.home',['name'=>$name]);
+    });
     
 
 
