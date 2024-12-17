@@ -5,20 +5,7 @@
 
 
     @vite(['resources/sass/app.scss','resources/js/app.js'])
-    <style>
-        /* body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-            flex-direction: column;
 
-            
-        }
-         */
-    </style>
 </head>
 <body class ="container">
     <h1>Home Ni {{ $name }}</h1>
@@ -26,7 +13,6 @@
         <div class = "col-lg-6 col-md-4 col-sm-3 bg-primary  "> 
               <i class="bi bi-apple"></i>
             <h2>Col 1</h2>
-          <!-- <button type="button " class="btn btn-primary">Primary</button> -->
         </div>
     <div class = "col-lg-6 col-md-4 col-sm-3 bg-danger ">
         <i class="bi bi-apple"></i>
@@ -69,16 +55,9 @@
         <div class ="col-lg-6 col-md-4 col-sm-3 col-6 bg-primary">B6</div>
     </div>
 
-
-
     </div>
 
 
-    
-
- 
-
-    <!-- <img src='https://png.pngtree.com/png-vector/20240802/ourlarge/pngtree-3d-white-color-chibi-little-ghost-on-transparent-background-png-image_13337394.png'/> -->
 
 
 </body>
