@@ -2,13 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 
 Route::group(['prefix'=> 'user'], function(){
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    
+
     Route::get('/home', function () {
         return "Sample Ui";
     })->name('homePage');
@@ -56,8 +57,8 @@ Route::group(['prefix'=> 'admin'], function(){
         return view('admin.dashboard');
     });
 
-    Route::get('/home/{name}', function ($name) {
-        return view('admin.home',['name'=>$name]);
+    Route::get('/home1/{name}', function ($name) {
+        return view('home1',['name'=>$name]);
     });
     
 
