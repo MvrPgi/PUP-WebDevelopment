@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -57,9 +58,10 @@ Route::group(['prefix'=> 'admin'], function(){
         return view('admin.dashboard');
     });
 
-    Route::get('/home1/{name}', function ($name) {
-        return view('home1',['name'=>$name]);
-    });
+    Route::get('/home1', [BlogController::class, 'retrieveBlogs']);
+
+
+
 
     Route::get('/home/{name}', function ($name) {
         return view('admin.home',['name'=>$name]);
@@ -68,7 +70,13 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::get('/four', function () {
         return view('four');
     });
+
+    Route::get('/five', function () {
+        return view('layout.master');
+    });
     
 
 
 });
+
+Route::get('/blog-data', [BlogController::class, 'index']);

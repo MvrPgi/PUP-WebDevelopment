@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-    @vite(['resources/sass/app.scss','resources/js/app.js'])
-</head>
-<body class="container">
+@extends('layout.master')
+@section('content')
+<div class="container">
     <div class="row p-5 m-5">
         <div class="col-lg-4">
             <div class="accordion" id="accordionExample">
@@ -57,32 +53,25 @@
                 </nav>
             </div>
             <div class="row">
-                <div class="card m-1" style="width: 15rem;">
-                    <img src="https://i.scdn.co/image/ab6761610000e5ebbb55fc616733b6c09d48481f" class="card-img-top" alt="...">
+                @foreach ($blogs as $blog)
+                <div class="card m-1" style="width: 13rem;">
+                    <img src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t39.30808-6/364775514_732270845577526_7323655874009015780_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=gVmjw--Ugv8Q7kNvgFrato1&_nc_zt=23&_nc_ht=scontent.fmnl4-4.fna&_nc_gid=ARervNaqUMzkxjUV---cVQ5&oh=00_AYCvXA2J9mz1umK77Y7TNtPJbVqGwenCb1BGt4Q76pG5mg&oe=6769D98D" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title">{{ $blog['title'] }}</h5>
+                        <p class="card-text">{{ $blog['body'] }}</p>
+                        @if ($blog['status']==1)
                         <a href="#" class="btn btn-primary">Go somewhere</a>
+                        @endif
+
                     </div>
                 </div>
-                <div class="card m-1" style="width: 18rem;">
-                    <img src="https://i.pinimg.com/736x/55/45/30/5545303646d278f41f5dd26557510bd6.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card m-1" style="width: 33rem;">
-                    <img src="https://images.squarespace-cdn.com/content/v1/6127bd65b111ea759eab3094/908b034c-767c-428e-8338-941bd9385b7e/GOWkLwlakAAODLZ.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
+
     </div>
-</body>
-</html>
+</div>
+</div>
+</div>
+</div>
+@endsection
