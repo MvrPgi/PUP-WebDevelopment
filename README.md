@@ -19,11 +19,11 @@ The repository includes the following:
 ## How to Use
 1. Clone the repository:
    ```bash
-   git clone https://github.com/MvrPgi/Assistance-Form-Database-
+   git clone https://github.com/MvrPgi/PUP-WebDevelopment
    ```
 2. Navigate to the project directory:
    ```bash
-   cd Assistance-Form-Database-
+   cd PUP-WebDevelopment
    ```
 3. Install dependencies:
    ```bash
