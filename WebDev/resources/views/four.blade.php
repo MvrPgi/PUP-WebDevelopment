@@ -6,48 +6,51 @@
     @vite(['resources/sass/app.scss','resources/js/app.js'])
     <link rel='stylesheet' href='resources/css/four.css'>
 </head>
+
 <style>
     table {
         border-collapse: separate;
-        border-spacing: 15px;
-    }
-
-    .card {
-        box-shadow: none;
-        border: none;
+        border-spacing: 50px;
     }
 </style>
 
+
+
 <body class="container">
-    <div class="row p-5 m-10" pt-1>
+    <div class="row py-5" pt-1>
         <div class="col-lg-4">
-            <form class="border" style="padding: 50px;">
+            <form class="border" style="padding: 50px;" method="post" action="{{ route('four.submit') }}">
+                @csrf
                 <div class="mb-3">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <label for="exampleInputEmail1" class="form-label" style="margin-right: 25px;">Email:</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div class="mb-3">
+                        <div class="row g-3 align-items-center">
+
+                            <div class="col-auto">
+                                <label for="exampleInputEmail1" class="form-label" style="margin-right: 25px;">Email:</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <label for="exampleInputPassword1" class="form-label">Password:</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div class="mb-3">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="exampleInputPassword1" class="form-label">Password:</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-sm" style="margin-left: 87px;">Login</button>
-                <a href="#">Forgot Password?</a>
+                    <div class="d-flex justify-content align-items-center ms-auto">
+                        <button type="submit" class="btn btn-primary btn-sm">Login</button>
+                        <a href="#" class="ms-3">Forgot Password?</a>
+                    </div>
             </form>
         </div>
         <div class="col-lg-8">
-            <div class="card">
+            <div class="card border-0">
                 <div class="card-body">
                     <h1 class="card-title text-center fw-bold">PRICING</h1>
                     <p class="card-text text-center" style="padding:15px;">Loresh Ipsum is simply dummy text of the printing and typesetting industry.<br> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,<br> when an unknown printer took a galley of type<br> and scrambled it to make a type specimen book.</p>
@@ -59,52 +62,39 @@
         <div class="col-lg-4">
         </div>
         <div class="col-lg-8">
-            <div class="card" style="width: 53rem;">
+            <div class="card border-0" style="width: 53rem;">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="card" style="width: 17rem;">
+                            <div class="card " style="width: 17rem;">
                                 <img src="https://wallpapers.com/images/hd/twice-4k-in-abstract-backdrop-7uumppyw3cc8t38w.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <div class="card" style="width: 17rem;">
+                            <div class="card shadow-none " style="width: 17rem;">
                                 <img src="https://wallpapers.com/images/hd/twice-4k-in-abstract-backdrop-7uumppyw3cc8t38w.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <div class="card" style="width: 17rem;">
+                            <div class="card " style="width: 17rem;">
                                 <img src="https://wallpapers.com/images/hd/twice-4k-in-abstract-backdrop-7uumppyw3cc8t38w.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-lg-4">
-                            <div class="card" style="width: 17rem;">
+                            <div class="card " style="width: 17rem;">
                                 <img src="https://wallpapers.com/images/hd/twice-4k-in-abstract-backdrop-7uumppyw3cc8t38w.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <div class="card" style="width: 17rem;">
+                            <div class="card " style="width: 17rem;">
                                 <img src="https://wallpapers.com/images/hd/twice-4k-in-abstract-backdrop-7uumppyw3cc8t38w.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <div class="card" style="width: 17rem;">
+                            <div class="card " style="width: 17rem;">
                                 <img src="https://wallpapers.com/images/hd/twice-4k-in-abstract-backdrop-7uumppyw3cc8t38w.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                </div>
                             </div>
                         </div>
                     </div>

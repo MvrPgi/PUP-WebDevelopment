@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -61,15 +63,13 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::get('/home1', [BlogController::class, 'retrieveBlogs']);
 
 
-
-
     Route::get('/home/{name}', function ($name) {
         return view('admin.home',['name'=>$name]);
     });
 
-    Route::get('/four', function () {
-        return view('four');
-    });
+    // Route::get('/four', function () {
+    //     return view('four');
+    // });
 
     Route::get('/five', function () {
         return view('layout.master');
@@ -79,4 +79,12 @@ Route::group(['prefix'=> 'admin'], function(){
 
 });
 
-Route::get('/blog-data', [BlogController::class, 'index']);
+
+    Route::get ('/four', [LoginController::class, 'index']);
+    Route::post('/four', [LoginController::class, 'loginSubmit'])->name('four.submit');
+
+
+
+
+
+
