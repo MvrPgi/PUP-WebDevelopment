@@ -19,17 +19,25 @@
 <body class="container">
     <div class="row py-5" pt-1>
         <div class="col-lg-4">
+            @if($errors->any())
+            @foreach($errors->all() as $error)
+            <div class="alert alert-danger" role="alert">
+                {{ $error }}
+            </div>
+            @endforeach
+            @endif
+
             <form class="border" style="padding: 50px;" method="post" action="{{ route('four.submit') }}">
                 @csrf
+
                 <div class="mb-3">
                     <div class="mb-3">
                         <div class="row g-3 align-items-center">
-
                             <div class="col-auto">
                                 <label for="exampleInputEmail1" class="form-label" style="margin-right: 25px;">Email:</label>
                             </div>
                             <div class="col-auto">
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" required>
                             </div>
                         </div>
                     </div>
@@ -47,8 +55,10 @@
                         <button type="submit" class="btn btn-primary btn-sm">Login</button>
                         <a href="#" class="ms-3">Forgot Password?</a>
                     </div>
+                </div>
             </form>
         </div>
+
         <div class="col-lg-8">
             <div class="card border-0">
                 <div class="card-body">

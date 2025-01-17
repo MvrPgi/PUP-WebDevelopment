@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,12 @@ class LoginController extends Controller
         return view('four');
     }
 
-    public function loginSubmit(Request $request){
+    public function loginSubmit(LoginRequest $request){
         Log::info("Pumasok Ako Dito");
+        // $request->validate([
+        //     'email' => 'required|email',
+        //     'password' => 'required'
+        // ]);
         try {
             $userName = $request->input('email');
             $password = $request->input('password');
@@ -24,4 +29,6 @@ class LoginController extends Controller
         }
         Log::info('Lumabas Ako Dito');
     }
+    
 }
+
