@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -60,6 +61,21 @@ class BlogController extends Controller
         }
         Log::info('Exit Na AKo');
         return view('home1',compact('blogs'));
+
+
     }
+    public function sampleModel(){
+    //     $blogs = DB::table('blogs')->get();
+    //     return view('home1',compact('blogs'));
+    $blogs = DB::table('blogs')->insert([
+        'title' => 'NewJeans1',
+        'description' => 'Sample Lang To',
+        'status' => '1',
+        'type_id' => '1'
+    ]);
+    return $blogs;
+    }
+
+    
 
 }
