@@ -10,26 +10,26 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix'=> 'user'], function(){
+// Route::group(['prefix'=> 'user'], function(){
 
 
-    Route::get('/home', function () {
-        return "Sample Ui";
-    })->name('homePage');
+//     Route::get('/home', function () {
+//         return "Sample Ui";
+//     })->name('homePage');
     
-    Route::get('/about', function () {
-        return"<a href =".route('homePage'). "'>Home</a>'"; 
-    })->name('aboutPage');
+//     Route::get('/about', function () {
+//         return"<a href =".route('homePage'). "'>Home</a>'"; 
+//     })->name('aboutPage');
     
-    // Route the user to the page with the id of 1 or any id
-    Route::get('edit/{id}',function ($id) {
-        return "<a href=".route('hello',$id)."'>Edit</a>'";  
-    });
+//     // Route the user to the page with the id of 1 or any id
+//     Route::get('edit/{id}',function ($id) {
+//         return "<a href=".route('hello',$id)."'>Edit</a>'";  
+//     });
     
-    Route::get('user/{id}', function ($id) {
-        return $id;
-    })->name('hello');
-});
+//     Route::get('user/{id}', function ($id) {
+//         return $id;
+//     })->name('hello');
+// });
 
 Route::fallback(function(){
 
@@ -53,6 +53,16 @@ Route::fallback(function(){
 
 //     return redirect()->route('homePage');
 // });
+
+Route::group (['prefix'=> 'user'], function(){
+
+    Route::get('/dash',[BlogController::class, 'SampleModel']);
+
+
+
+    });
+    
+
 
 Route::group(['prefix'=> 'admin'], function(){
 
@@ -81,7 +91,12 @@ Route::group(['prefix'=> 'admin'], function(){
 
 
     Route::get ('/four', [LoginController::class, 'index']);
-    Route::post('/four', [LoginController::class, 'loginSubmit'])->name('four.submit');
+    Route::post('/four', [BlogController::class, 'Submit'])->name('four.submit');
+
+    // Route::get('/data', [BlogController::class, 'sampleModel']);
+
+
+
 
 
 
