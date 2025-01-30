@@ -13,7 +13,7 @@ class blog extends Model
     protected $fillable = [
         'title',
         'description',
-        'status',
+        'status_id',
         'category_id'
     ];
 
@@ -23,6 +23,6 @@ class blog extends Model
     }
     public function stats()
     {
-        return $this->hasOne(Status::class,'id','status');
+        return $this->hasOne(Status::class,'id','status_id');
     }
 }

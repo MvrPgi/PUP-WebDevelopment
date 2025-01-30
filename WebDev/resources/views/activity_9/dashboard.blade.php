@@ -5,6 +5,8 @@
   <title>Home</title>
   @vite(['resources/sass/app.scss','resources/js/app.js'])
   <link rel='stylesheet' href='resources/css/four.css'>
+  <!-- Include Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <style>
@@ -12,9 +14,24 @@
     border-collapse: separate;
     border-spacing: 50px;
   }
+
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    min-width: 200px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .toast.show {
+    opacity: 1;
+  }
 </style>
-
-
 
 <body>
   <div class="row py-4">
@@ -40,7 +57,6 @@
           </div>
         </div>
 
-
         <div class="row mb-3 align-items-center">
           <div class="col-md-4">
             <label for="Category" class="form-label">Status:</label>
@@ -54,7 +70,6 @@
             </select>
           </div>
         </div>
-
 
         <div class="row mb-3 align-items-center">
           <div class="col-md-4">
@@ -83,13 +98,11 @@
         <table class="table table-hover" id="table">
           <thead>
             <tr>
-
               <th class="text-center" scope="col">Title</th>
               <th class="text-center" scope="col">Description</th>
               <th class="text-center" scope="col">Status</th>
               <th class="text-center" scope="col">Category</th>
               <th class="text-center" scope="col">Created At</th>
-
             </tr>
           </thead>
           <tbody class="table-group-divider">
@@ -98,35 +111,58 @@
               <td class="text-center">{{ $blog->title }}</td>
               <td class="text-center">{{ $blog->description }}</td>
               <td class="text-center">{{ $blog->stats->status ?? 'N/A' }}</td>
-              <td class="text-center">{{ $blog->category->name?? 'N/A' }}</td>
-              <td class="text-center">{{ date('d-M-y g:i a', strtotime($blog->created_at))}}</td>
+              <td class="text-center">{{ $blog->category->name ?? 'N/A' }}</td>
+              <td class="text-center">{{ date('d-M-y g:i a', strtotime($blog->created_at)) }}</td>
             </tr>
             @endforeach
-
           </tbody>
         </table>
       </div>
     </div>
+
+
+    <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Notification</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Blog created successfully!
+      </div>
+    </div>
   </div>
 
-
-</body>
-
-<script type="module">
-  const form = '#createBlogForm';
-  $(document).ready(function() {
-    createBlog();
  
-  });
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      const form = '#createBlogForm';
+
+      function showToast(message) {
+        let toast = document.getElementById("toast");
+        let toastBody = toast.querySelector(".toast-body");
+        toastBody.textContent = message;
+
+        toast.classList.add("show");
+
+        setTimeout(function() {
+          toast.classList.remove("show");
+        }, 5000);
+      }
 
 
+      function resetField() {
+        $(form).find("input[type=text], textarea").val('');
+        $(form).find("select").prop('selectedIndex', 0); 
+      }
 
-  function createBlog() {
-    $(form).on('submit', function(event) {
+
+      $(form).on('submit', function(event) {
         event.preventDefault();
 
         $.ajax({
-
           url: '{{ route('blog.create') }}',
           type: 'POST',
           data: new FormData(this),
@@ -137,27 +173,29 @@
           success: function(response) {
             populateData(response);
             resetField();
+            showToast("Blog created successfully!");
           },
-        })
-
-        function populateData(response) {
-          var row = '<tr>';
-          row += '<td class="text-center">' + response.title + '</td>';
-          row += '<td class="text-center">' + response.description + '</td>';
-          row += '<td class="text-center">' + response.stats.status + '</td>';
-          row += '<td class="text-center">' + response.category.name+ '</td>';
-          row += '<td class="text-center">' + response.created_at + '</td>';
-          row += '</tr>';
-
-          $("#table").find('tbody').prepend(row);
-        }
-
-        function resetField() {
-          $(form).find("input[type=text], textarea").val('');
-          $(form).find("option[selected]").prop('selected', true);
+          error: function(xhr, status, error) {
+            console.error('Error:', error);
+            showToast("An error occurred. Please try again.");
           }
-  });
-}
-</script>
+        });
+      });
+
+     
+      function populateData(response) {
+        var row = '<tr>';
+        row += '<td class="text-center">' + response.title + '</td>';
+        row += '<td class="text-center">' + response.description + '</td>';
+        row += '<td class="text-center">' + (response.stats.status) + '</td>';
+        row += '<td class="text-center">' + (response.category.name) + '</td>';
+        row += '<td class="text-center">' + response.created_at + '</td>';
+        row += '</tr>';
+
+        $("#table").find('tbody').prepend(row);
+      }
+    });
+  </script>
+</body>
 
 </html>

@@ -121,7 +121,7 @@ class BlogController extends Controller
         $result = [
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'status' => $request->input('status'),
+            'status_id' => $request->input('status'),
             'category_id' => $request->input('category')
         ];
         
