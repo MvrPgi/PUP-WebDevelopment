@@ -19,7 +19,7 @@ class BlogFactory extends Factory
         return [
             'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
-            'status_id' => rand(1, 2),
+            'status' => rand(1, 2),
             'category_id' => rand(1, 3)
         ];
     }

@@ -54,13 +54,11 @@ Route::fallback(function(){
 //     return redirect()->route('homePage');
 // });
 
-Route::group (['prefix'=> 'user'], function(){
+Route::group(['prefix' => 'user'], function() {
+    Route::get('/dash', [BlogController::class, 'SampleModel'])->name('dash');
+    Route::post('/create', [BlogController::class, 'createBlogData'])->name('blog.create');
+});
 
-    Route::get('/dash',[BlogController::class, 'SampleModel']);
-
-
-
-    });
     
 
 
@@ -93,7 +91,7 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::get ('/four', [LoginController::class, 'index']);
     Route::post('/four', [BlogController::class, 'Submit'])->name('four.submit');
 
-    // Route::get('/data', [BlogController::class, 'sampleModel']);
+    Route::get('/data', [BlogController::class, 'index']);
 
 
 
